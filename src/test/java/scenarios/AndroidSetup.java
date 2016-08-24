@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import pages.Constants;
@@ -51,7 +52,7 @@ public class AndroidSetup {
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
         driver =  new AndroidDriver(new URL(Constants.hubIP), capabilities);
-        Log.info("SESSION CREATED : "+driver.getSessionId().toString()+" "+udid+" ");
+        Log.debug("SESSION CREATED : "+driver.getSessionId().toString()+" "+udid+" ");
     }
 
     @Parameters({"udid"})

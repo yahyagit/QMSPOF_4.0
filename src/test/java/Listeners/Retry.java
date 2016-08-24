@@ -1,8 +1,7 @@
-package Listeners;
+package listeners;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
-import ru.yandex.qatools.allure.annotations.Step;
 import ru.yandex.qatools.allure.utils.AnnotationManager;
 import utils.Log;
 
@@ -14,13 +13,12 @@ public class Retry implements IRetryAnalyzer {
     private int retryCount=1;
     private int maxRetryCount=2;
 
-    @Step("Retry Mode : re-run failed testcases")
     @Override
     public boolean retry(ITestResult result) {
         if (retryCount < maxRetryCount) {
             AnnotationManager testAnnotationAllure = new AnnotationManager(result.getMethod().getConstructorOrMethod()
                     .getMethod().getAnnotations());
-            Log.info("######  Retry failed tc-scenarios : " + testAnnotationAllure.getTitle() + " ######");
+            Log.debug("######  Retry failed tc-scenarios : " + testAnnotationAllure.getTitle() + " ######");
             retryCount++;
             return true;
         }

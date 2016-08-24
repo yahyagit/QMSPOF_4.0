@@ -1,6 +1,7 @@
 package utils;
 
 import org.apache.log4j.*;
+import ru.yandex.qatools.allure.annotations.Step;
 
 
 /**
@@ -36,10 +37,19 @@ public class Log {
      *
      * @param message message to be displayed
      */
+
+    @Step("{0}")
     public static void info(String message) {
         consoleAppender.setName("Console");
         LOGGER.addAppender(consoleAppender);
         LOGGER.setLevel(Level.INFO);
         LOGGER.info(message);
+    }
+
+    public static void debug(String message) {
+        consoleAppender.setName("Console");
+        LOGGER.addAppender(consoleAppender);
+        LOGGER.setLevel(Level.DEBUG);
+        LOGGER.debug(message);
     }
 }

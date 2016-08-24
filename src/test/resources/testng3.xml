@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Mobile App OLXID" verbose="3" parallel="methods" thread-count="1">
+<suite name="Mobile App OLXID" verbose="3" parallel="tests" thread-count="1">
 
     <listeners>
-        <listener class-name="Listeners.RetryListeners" />
+        <listener class-name="listeners.RetryListeners" />
     </listeners>
 
-   <test name="Home Page OLXID" preserve-order="false">
+   <test name="Login Sulley 01 OLXID" preserve-order="false">
        <classes>
-          <class name="scenarios.HomePageTest"/>
+          <class name="scenarios.LoginPageTest"/>
        </classes>
+    </test>
+
+    <test name="Login Sulley 02 OLXID" preserve-order="false">
+        <classes>
+            <class name="scenarios.LoginTest"/>
+        </classes>
     </test>
 </suite>
