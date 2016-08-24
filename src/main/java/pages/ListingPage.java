@@ -133,7 +133,7 @@ public class ListingPage extends BasePage{
     {
         Log.info("Click Hamburger Bar");
         clickElement(getIdLocator(hamburgerBar));
-        return new HamburgerBarPage();
+        return new HamburgerBarPage(driver);
     }
 
     @Step("Click Search Button")

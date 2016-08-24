@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
     protected static final String smsBtnID = "com.app.sulley:id/entrance_btnLoginSms";
     protected static final String olxLoginID = "com.app.sulley:id/entrance_btnLoginOlx";
     protected static final String skipBtnID = "com.app.sulley:id/entrance_btnSkip";
-    protected static final String olxLogoID = "";
+    protected static final String olxLogoID = "com.app.tokobagus.betterb:id/entrance_btnLoginOlx";
     protected static final String presentationTextID = "com.app.sulley:id/entrance_bottomSubContainer1";
     public static final String paginationsID = "com.app.sulley:id/entrance_indicatorContainer";
     public static final String linearLayout = "android.widget.LinearLayout";
