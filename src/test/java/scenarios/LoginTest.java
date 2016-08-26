@@ -18,6 +18,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 @Listeners(ScreenshootsListener.class)
 @Features("Login Feature")
 public class LoginTest extends AndroidSetup {
+    private LoginWithGplusModule loginWithGplusModule;
 
     // login With OLX Login Page
     public void userNotAbleToLoginWithUnregisteredEmail() {}
@@ -78,39 +79,6 @@ public class LoginTest extends AndroidSetup {
         LoginWithFBModule fb = new LoginWithFBModule(driver);
         fb.removeLoginApps_logout();
     }
-
-    // login with Gplus
-    @Test(enabled = false)
-    public void userAbleToRedirectToGmailLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        LoginWithGplusModule gplus = loginPage.clickLoginWithGPlus();
-        gplus.verifyAccountExist();
-    }
-
-    @Stories("As A User I Will not be Able to Login with Google+")
-    @Title("Verify User Not Able to Login with Invalid Google+ Credentials")
-    @TestCaseId("TC_LBG_03_001")
-    @Test(priority = 6)
-    public void userNotAbleToLoginWithInvalidGplusCredentials() {}
-
-    @Stories("As A User I want able to Login Using Google+")
-    @Title("Verify Google+ ask permissions from users to give the granted access")
-    @TestCaseId("TC_LBG_03_003")
-    @Test(priority = 8)
-    public void userAbleToGiveGrantedAccessToGplus() {}
-
-    @Stories("As A User I want able to Login with Google+")
-    @Title("Verify User Able to Login with Google+ Credentials")
-    @TestCaseId("TC_LBG_03_002")
-    @Test(priority = 7)
-    public void userAbleToLoginWithValidGplusCredentials() {}
-
-    @Stories("As A User I want Set Preferences Category After Success Login")
-    @Title("Verify User Able to Set Preferences Category After Success Login")
-    @TestCaseId("TC_LBG_03_005, TC_LBG_03_004")
-    @Test(priority = 7)
-    public void userAbleToSetPreferencesAfterSuccessGplusLogin() {}
-    public void userAbleToLogoutAfterSuccessGplusLogin() {}
 
     // login with SMS
     public void userNotAbleToLoginWithBlankPIN() {}
