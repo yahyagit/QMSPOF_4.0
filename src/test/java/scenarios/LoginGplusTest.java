@@ -5,10 +5,7 @@ import module.LoginWithGplusModule;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Stories;
-import ru.yandex.qatools.allure.annotations.TestCaseId;
-import ru.yandex.qatools.allure.annotations.Title;
+import ru.yandex.qatools.allure.annotations.*;
 
 /**
  * Created by NugrohoSantoso on 8/26/16.
@@ -63,5 +60,9 @@ public class LoginGplusTest extends AndroidSetup {
         loginWithGplusModule.verifySetCategoryPreferences();
     }
 
+    @Stories("As A User I want able to Logout after Success Login")
+    @Title("Verify User Able to Logout after Success Google+ Login")
+    @TestCaseId("TC_LBG_03_006")
+    @Test(priority = 99)
     public void userAbleToLogoutAfterSuccessGplusLogin() {}
 }
