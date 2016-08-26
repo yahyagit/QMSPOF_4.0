@@ -19,9 +19,9 @@ public class CategoryPreferencesPage extends BasePage {
     protected static final String relativeLayout = "android.widget.RelativeLayout";
     protected static final String linearLayout = "android.widget.LinearLayout";
     protected static final String titleListingText = "Pilih Kategori Favorit Kamu";
-    protected static final String categoryListingID = "com.app.sulley:id/rvCategory";
-    protected static final String cardViewID = "com.app.sulley:id/card_view";
-    protected static final String categoryTitle = "com.app.sulley:id/tvCategoryTitle";
+    protected static final String categoryListingID = "com.app.tokobagus.betterb/rvCategory";
+    protected static final String cardViewID = "com.app.tokobagus.betterb:id/card_view";
+    protected static final String categoryTitle = "com.app.tokobagus.betterb:id/tvCategoryTitle";
     protected static final String buttonSimpanID = "";
     protected static final String checkIconID = "";
 
@@ -31,7 +31,7 @@ public class CategoryPreferencesPage extends BasePage {
     }
 
     @AndroidFindBys({
-            @AndroidFindBy( id = cardViewID ),
+            @AndroidFindBy(id = cardViewID),
             @AndroidFindBy(className = relativeLayout),
             @AndroidFindBy(id = categoryTitle)
     })

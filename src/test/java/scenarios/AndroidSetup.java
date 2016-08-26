@@ -5,14 +5,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.ITestContext;
-import pages.Constants;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
+import pages.Constants;
 import tracking.NetClient;
 import utils.Log;
 
@@ -22,7 +18,6 @@ import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 
 public class AndroidSetup {
@@ -33,11 +28,11 @@ public class AndroidSetup {
     
     public void prepareAndroidForAppium(String udid) throws MalformedURLException, Exception {
         File appDir = new File(Constants.apkDir);
-        File app = new File(appDir, "app-debug-unaligned.apk");
+        File app = new File(appDir, "app-debug-1.0.0.1.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device","Android");
 
-        capabilities.setCapability("appPackage", "com.app.sulley");
+        capabilities.setCapability("appPackage", "com.app.tokobagus.betterb");
         capabilities.setCapability("appActivity", "sea.olxsulley.presentation.view.entrance.EntranceActivity");
 
         capabilities.setCapability("deviceName","Galaxy S4");

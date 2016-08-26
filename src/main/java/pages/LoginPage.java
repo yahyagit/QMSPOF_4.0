@@ -21,18 +21,20 @@ import java.util.List;
  * Created by buddyarifin on 8/4/16.
  */
 public class LoginPage extends BasePage {
-    protected static final String facebookBtnID = "com.app.sulley:id/entrance_btnGp";
-    protected static final String googleBtnID = "com.app.sulley:id/entrance_btnGp";
-    protected static final String smsBtnID = "com.app.sulley:id/entrance_btnLoginSms";
-    protected static final String olxLoginID = "com.app.sulley:id/entrance_btnLoginOlx";
-    protected static final String skipBtnID = "com.app.sulley:id/entrance_btnSkip";
+    protected static final String facebookBtnID = "com.app.tokobagus.betterb:id/entrance_btnFb";
+    protected static final String googleBtnID = "com.app.tokobagus.betterb:id/entrance_btnGp";
+    protected static final String smsBtnID = "com.app.tokobagus.betterb:id/entrance_btnLoginSms";
+    protected static final String olxLoginID = "com.app.tokobagus.betterb:id/entrance_btnLoginOlx";
+    protected static final String skipBtnID = "com.app.tokobagus.betterb:id/entrance_btnSkip";
     protected static final String olxLogoID = "com.app.tokobagus.betterb:id/entrance_btnLoginOlx";
-    protected static final String presentationTextID = "com.app.sulley:id/entrance_bottomSubContainer1";
-    public static final String paginationsID = "com.app.sulley:id/entrance_indicatorContainer";
+    protected static final String presentationTextID = "com.app.tokobagus.betterb:id/entrance_bottomSubContainer1";
+    public static final String paginationsID = "com.app.tokobagus.betterb:id/entrance_indicatorContainer";
     public static final String linearLayout = "android.widget.LinearLayout";
     public static final String imageView = "android.widget.ImageView";
-    public static final String introTitleID = "com.app.sulley:id/intro_tv";
+    public static final String introTitleID = "com.app.tokobagus.betterb:id/intro_tv";
     AndroidDriver androidDriver;
+
+    LoginWithFBModule fb = new LoginWithFBModule(driver);
 
     @AndroidFindBys({
             @AndroidFindBy(id = paginationsID),
@@ -96,6 +98,7 @@ public class LoginPage extends BasePage {
     @Step("Click Facebook Login Button")
     public LoginWithFBModule clickLoginWithFacebook() {
         Log.info("Click Facebook Login Button");
+        isWaitElementPresent(getIdLocator(facebookBtnID));
         clickElement(getIdLocator(facebookBtnID));
         return new LoginWithFBModule(driver);
     }
