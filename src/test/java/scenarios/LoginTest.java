@@ -20,13 +20,6 @@ import ru.yandex.qatools.allure.annotations.Title;
 public class LoginTest extends AndroidSetup {
     private LoginWithGplusModule loginWithGplusModule;
 
-    // login With OLX Login Page
-    public void userNotAbleToLoginWithUnregisteredEmail() {}
-    public void userNotAbleToLoginWithIncorrectEmailFormat() {}
-    public void userNotAbleToLoginWithInvalidCredentials() {}
-    public void userAbleToLoginWithValidCredentials() {}
-    public void userNotAbleToLoginWithBlankCredentials() {}
-
     // login with FB
     @Stories("As A User I Will not be Able to Login")
     @Title("Verify User Not Able to Login with Invalid Facebook Credentials")
