@@ -8,6 +8,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
+import pages.InstanceDriver;
 import pages.Constants;
 import tracking.NetClient;
 import utils.Log;
@@ -20,9 +21,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class AndroidSetup {
+public class AndroidSetup extends InstanceDriver {
 
-    public AndroidDriver driver;
     public NetClient net;
     public JsonObject jsonObject;
     

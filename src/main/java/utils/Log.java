@@ -12,9 +12,10 @@ public class Log {
     private static final Logger LOGGER = Logger.getLogger("APPIUM");
     private static PatternLayout layout = new PatternLayout("%d{dd MMM yyyy HH:mm:ss} %5p %c{1} - %m%n");
     private static ConsoleAppender consoleAppender;
+    private static StepsScreenshotsRule screenshotsRule;
 
     static {
-        consoleAppender = new ConsoleAppender(layout, "System.out");
+        screenshotsRule = new StepsScreenshotsRule(layout, "System.out");
     }
 
     /**
@@ -40,15 +41,15 @@ public class Log {
 
     @Step("{0}")
     public static void info(String message) {
-        consoleAppender.setName("Console");
-        LOGGER.addAppender(consoleAppender);
+        screenshotsRule.setName("Console");
+        LOGGER.addAppender(screenshotsRule);
         LOGGER.setLevel(Level.INFO);
         LOGGER.info(message);
     }
 
     public static void debug(String message) {
-        consoleAppender.setName("Console");
-        LOGGER.addAppender(consoleAppender);
+        screenshotsRule.setName("Console");
+        LOGGER.addAppender(screenshotsRule);
         LOGGER.setLevel(Level.DEBUG);
         LOGGER.debug(message);
     }

@@ -29,7 +29,7 @@ public class LoginPageTest extends AndroidSetup {
     @Stories("As A User I Want to skip Login Process")
     @Title("Verify User Able to Skip Login Process and redirect to Listing Page")
     @TestCaseId("TC_HOME_01_002")
-    @Test(priority = 7)
+    @Test(priority = 3)
     public void userAbleToSkipLogin() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickSkipButton();
