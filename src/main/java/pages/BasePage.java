@@ -20,6 +20,7 @@ import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Attachment;
 
 import org.openqa.selenium.TakesScreenshot;
+import utils.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,7 +47,7 @@ public class BasePage  {
     }
     
     protected void waitForVisibilityOf(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, 200);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         Assert.assertTrue(isElementPresent(locator));
     }
@@ -102,7 +103,13 @@ public class BasePage  {
     	driver.findElement(by).clear();
     	driver.findElement(by).sendKeys(keys);
     }
-    
+
+    protected void sendKeysById(By locator, String keys){
+        WebElement element = driver.findElement(locator);
+        element.clear();
+        element.sendKeys(keys);
+    }
+
     protected void sendKeysElements(By locator,int index, String keys){
     	waitForVisibilityOf(locator);
     	WebElement element=getTextElements(locator, index);
@@ -153,9 +160,9 @@ public class BasePage  {
     public By getResourceLocator(String locator){ return By.xpath("//android.widget.ImageButton[@resource-id='"+locator+"']"); }
     
     public By getButtonLocator(String locator){
-    	return By.xpath("//android.widget.Button[@text='"+locator+"']");
+    	return By.xpath("//android.widget.Button[@resource-id='"+locator+"']");
     }
-    
+
     public By getAndroidViewLocator(int index){
     	return (By.xpath("//android.view.View[@clickable='True']"));
     }
@@ -310,5 +317,15 @@ public class BasePage  {
                 }
         }
         return intArray;
+    }
+
+    public void switchWebViewCtx() {
+        Log.debug("Switch to Webview Mode");
+        this.driver = ((AndroidDriver)driver).context("WEBVIEW_com.app.tokobagus.betterb");
+    }
+
+    public void switchNativeCtx() {
+        Log.info("Switch to Native Mode");
+        this.driver = ((AndroidDriver)driver).context("NATIVE_APP");
     }
 }

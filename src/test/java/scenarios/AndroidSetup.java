@@ -5,14 +5,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.ITestContext;
-import pages.Constants;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
+import pages.InstanceDriver;
+import pages.Constants;
 import tracking.NetClient;
+import utils.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,18 +19,16 @@ import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 
-public class AndroidSetup {
+public class AndroidSetup extends InstanceDriver {
 
-    public AndroidDriver driver;
     public NetClient net;
     public JsonObject jsonObject;
     
     public void prepareAndroidForAppium(String udid) throws MalformedURLException, Exception {
         File appDir = new File(Constants.apkDir);
-        File app = new File(appDir, "app-debug-unaligned.apk");
+        File app = new File(appDir, "app-debug-1.0.0.1.apk");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device","Android");
 
@@ -50,7 +47,7 @@ public class AndroidSetup {
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
         driver =  new AndroidDriver(new URL(Constants.hubIP), capabilities);
-        System.out.println("SESSION CREATED : "+driver.getSessionId().toString()+" "+udid+" ");
+        Log.debug("SESSION CREATED : "+driver.getSessionId().toString()+" "+udid+" ");
     }
 
     @Parameters({"udid"})
@@ -82,7 +79,7 @@ public class AndroidSetup {
             jsonObject = jsonElement.getAsJsonObject();
         }catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Warning : File not found");
+            Log.info("Warning : File not found");
         }
         return jsonObject;
     }
