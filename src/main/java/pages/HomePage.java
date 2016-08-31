@@ -16,7 +16,7 @@ import java.util.List;
  * Created by buddyarifin on 8/4/16.
  */
 public class HomePage extends BasePage {
-    protected static final String facebookBtnID = "com.app.tokobagus.betterb:id/entrance_btnGp";
+    protected static final String facebookBtnID = "com.app.tokobagus.betterb:id/entrance_btnFb";
     protected static final String googleBtnID = "com.app.tokobagus.betterb:id/entrance_btnGp";
     protected static final String smsBtnID = "com.app.tokobagus.betterb:id/entrance_btnLoginSms";
     protected static final String olxLoginID = "com.app.tokobagus.betterb:id/entrance_btnLoginOlx";
@@ -81,13 +81,15 @@ public class HomePage extends BasePage {
     }
 
     @Step("Click Facebook Login Button")
-    public void clickLoginWithFacebook() {
+    public LoginWithFB clickLoginWithFacebook() {
         clickElement(getIdLocator(facebookBtnID));
+        return new LoginWithFB(driver);
     }
 
     @Step("Click Google Plus Login Button")
-    public void clickLoginWithGPlus() {
+    public LoginWithGplus clickLoginWithGPlus() {
         clickElement(getIdLocator(googleBtnID));
+        return new LoginWithGplus(driver);
     }
 
     @Step("Click SMS Login Button")
