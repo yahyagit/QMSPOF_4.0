@@ -15,6 +15,7 @@ import java.io.OutputStream;
 
 /**
  * Created by buddyarifin on 8/23/16.
+ * Rewrite ConsoleAppender log4j and added screenshots steps
  */
 public class StepsScreenshotsRule extends WriterAppender{
     Object obj;

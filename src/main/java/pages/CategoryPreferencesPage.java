@@ -22,8 +22,10 @@ public class CategoryPreferencesPage extends BasePage {
     protected static final String categoryListingID = "com.app.tokobagus.betterb/rvCategory";
     protected static final String cardViewID = "com.app.tokobagus.betterb:id/card_view";
     protected static final String categoryTitle = "com.app.tokobagus.betterb:id/tvCategoryTitle";
-    protected static final String buttonSimpanID = "";
+    protected static final String buttonSimpanText = "SIMPAN";
+    protected static final String buttonSkipID = "com.app.sulley:id/btnSkip";
     protected static final String checkIconID = "";
+    protected static final String errorMsgBarID = "com.app.sulley:id/snackbar_text";
 
     public CategoryPreferencesPage(WebDriver driver) {
         super(driver);
@@ -60,9 +62,22 @@ public class CategoryPreferencesPage extends BasePage {
     }
 
     public void clickBackBtn() {}
-    public void clickSimpanBtn() {}
+    public void clickSimpanBtn() {
+        Log.info("Click SIMPAN Button");
+        clickElement(getTextLocator(buttonSimpanText));
+    }
+
+    public void clickSkipBtn() {
+        Log.info("Click SKIP Button");
+        clickElement(getIdLocator(buttonSkipID));
+    }
+
     public void selectedCategory() {}
     public void selectedMultipleCategory() {}
-    public void verifyErrorMsgSelectedMoreThan3Category() {}
+    
+    public void verifyErrorMsgDisplay() {
+        Log.info("Verify Error Message Display");
+        Assert.assertTrue(isElementPresent(getIdLocator(errorMsgBarID)));
+    }
 
 }
