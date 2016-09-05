@@ -97,15 +97,16 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Click Facebook Login Button")
-    public LoginWithFB clickLoginWithFacebook() {
+    public LoginWithFBModule clickLoginWithFacebook() {
         clickElement(getIdLocator(facebookBtnID));
-        return new LoginWithFB(driver);
+        return new LoginWithFBModule(driver);
     }
 
     @Step("Click Google Plus Login Button")
-    public LoginWithGplus clickLoginWithGPlus() {
+    public LoginWithGplusModule clickLoginWithGPlus() {
         clickElement(getIdLocator(googleBtnID));
-        return new LoginWithGplus(driver);
+        return new LoginWithGplusModule(driver);
+    }
 
     @Step("Click SMS Login Button")
     public LoginWithSMSModule clickLoginWithSms() {
