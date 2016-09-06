@@ -1,6 +1,7 @@
 package pages;
 
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import module.FilterBySubCategory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import ru.yandex.qatools.allure.annotations.Step;
@@ -17,15 +18,10 @@ public class FilterPage extends BasePage {
     public static final String myLocationBtn = "";
     public static final String minHarga = "";
     public static final String maksHarga = "";
-    public static final String terdekatRb = "";
-    public static final String terbaruRb = "";
-    public static final String termurahRb = "";
-    public static final String termahalRb = "";
-    public static final String bekasRb = "";
-    public static final String baruRb = "";
     public static final String ubahBtn = "";
     public static final String resetBtn = "";
     public static final String simpanBtn = "";
+    private FilterBySubCategory filterBySubCategory;
 
     public FilterPage(WebDriver driver) {
         super(driver);
@@ -42,12 +38,8 @@ public class FilterPage extends BasePage {
         verifyMyLocationButton();
         verifyMinHargaButton();
         verifyMaksHargaButton();
-        verifyTerdekatRadioButton();
-        verifyTerbaruRadioButton();
-        verifyTermurahRadioButton();
-        verifyTermahalRadioButton();
-        verifyBekasRadioButton();
-        verifyBaruRadioButton();
+        verifyContentInUrutkanColumn();
+        verifyContentInKondisiColumn();
         verifyUbahButton();
         verifyResetButton();
         verifySimpanButton();
@@ -82,29 +74,13 @@ public class FilterPage extends BasePage {
     {
         Log.info("Verify MaksHarga Button");
     }
-    public void verifyTerdekatRadioButton()
+    public void verifyContentInUrutkanColumn()
     {
-        Log.info("Verify Terdekat Radio Button");
+        Log.info("Verify Radio Button in Urutkan Column");
     }
-    public void verifyTerbaruRadioButton()
+    public void verifyContentInKondisiColumn()
     {
-        Log.info("Verify Terbaru Radio Button");
-    }
-    public void verifyTermurahRadioButton()
-    {
-        Log.info("Verify Termurah Radio Button");
-    }
-    public void verifyTermahalRadioButton()
-    {
-        Log.info("Verify Termahal Radio Button");
-    }
-    public void verifyBekasRadioButton()
-    {
-        Log.info("Verify Bekas Radio Button");
-    }
-    public void verifyBaruRadioButton()
-    {
-        Log.info("Verify Baru Radio Button");
+        Log.info("Verify Radio Button in Kondisi Column");
     }
     public void verifyUbahButton()
     {
@@ -137,10 +113,16 @@ public class FilterPage extends BasePage {
         Log.info("Click Location Button");
     }
 
-    @Step("Input Price Range")
-    public void inputPriceRange()
+    @Step("Input MinPrice Range")
+    public void inputMinPriceRange()
     {
-        Log.info("Input Price Range");
+        Log.info("Input MinPrice Range");
+    }
+
+    @Step("Input MaxPrice Range")
+    public void inputMaxPriceRange()
+    {
+        Log.info("Input MaxPrice Range");
     }
 
     @Step("Click One of Urutkan Column")
@@ -158,6 +140,12 @@ public class FilterPage extends BasePage {
     @Step("Click Ubah Button")
     public void clickUbahButton()
     {
+        filterBySubCategory.verifySubCategoryElementOne();
+        filterBySubCategory.clickSubCatergoryElementOne();
+        filterBySubCategory.verifySubCategoryElementTwo();
+        filterBySubCategory.clickSubCatergoryElementTwo();
+        filterBySubCategory.verifySubCategoryElementThird();
+        filterBySubCategory.clickSubCatergoryElementThird();
         Log.info("Click Ubah Button");
     }
 
