@@ -32,8 +32,8 @@ public class AndroidSetup extends InstanceDriver {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("device","Android");
 
-        capabilities.setCapability("appPackage", "com.app.tokobagus.betterb");
-        capabilities.setCapability("appActivity", "sea.olxsulley.presentation.view.entrance.EntranceActivity");
+        capabilities.setCapability("appPackage", "com.app.sulley");
+        capabilities.setCapability("appActivity", "sea.olxsulley.presentation.view.activities.OlxIdEntranceActivity");
 
         capabilities.setCapability("deviceName","Galaxy S4");
         capabilities.setCapability("platformName","Android");
