@@ -47,7 +47,7 @@ public class BasePage  {
     }
     
     protected void waitForVisibilityOf(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 200);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         Assert.assertTrue(isElementPresent(locator));
     }
@@ -321,11 +321,11 @@ public class BasePage  {
 
     public void switchWebViewCtx() {
         Log.debug("Switch to Webview Mode");
-        this.driver = ((AndroidDriver)driver).context("WEBVIEW_com.app.tokobagus.betterb");
+        driver = ((AndroidDriver)driver).context("WEBVIEW_com.app.sulley");
     }
 
     public void switchNativeCtx() {
         Log.info("Switch to Native Mode");
-        this.driver = ((AndroidDriver)driver).context("NATIVE_APP");
+        driver = ((AndroidDriver)driver).context("NATIVE_APP");
     }
 }

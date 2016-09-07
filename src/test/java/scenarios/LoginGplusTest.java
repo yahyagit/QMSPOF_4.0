@@ -32,7 +32,7 @@ public class LoginGplusTest extends AndroidSetup {
     @Stories("As A User I want able to Login Using Google+")
     @Title("Verify Google+ ask permissions from users to give the granted access")
     @TestCaseId("TC_LBG_03_003")
-    @Test(priority = 8)
+    @Test(priority = 7)
     public void userAbleToGiveGrantedAccessToGplus() {
         LoginPage loginPage = new LoginPage(driver);
         loginWithGplusModule = loginPage.clickLoginWithGPlus();
@@ -53,7 +53,7 @@ public class LoginGplusTest extends AndroidSetup {
     @Stories("As A User I want Set Preferences Category After Success Login")
     @Title("Verify User Able to Set Preferences Category After Success Login")
     @TestCaseId("TC_LBG_03_005, TC_LBG_03_004")
-    @Test(priority = 7)
+    @Test(priority = 8)
     public void userAbleToSetPreferencesAfterSuccessGplusLogin() {
         LoginPage loginPage = new LoginPage(driver);
         loginWithGplusModule = loginPage.clickLoginWithGPlus();

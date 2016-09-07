@@ -67,7 +67,7 @@ public class LoginFBTest extends AndroidSetup {
 
     @Title("Logout Fb account")
     @Test(priority = 99)
-    public void launchAnotherActivity() {
+    public void logoutFBAccount() {
         LoginWithFBModule fb = new LoginWithFBModule(driver);
         fb.removeLoginApps_logout();
     }

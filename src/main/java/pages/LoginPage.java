@@ -98,12 +98,15 @@ public class LoginPage extends BasePage {
 
     @Step("Click Facebook Login Button")
     public LoginWithFBModule clickLoginWithFacebook() {
+        Log.info("Click FB Button");
+        waitForClickabilityOf(getIdLocator(facebookBtnID), 100);
         clickElement(getIdLocator(facebookBtnID));
         return new LoginWithFBModule(driver);
     }
 
     @Step("Click Google Plus Login Button")
     public LoginWithGplusModule clickLoginWithGPlus() {
+        Log.info("Click Google Button");
         clickElement(getIdLocator(googleBtnID));
         return new LoginWithGplusModule(driver);
     }
