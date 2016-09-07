@@ -56,7 +56,7 @@ public class CategoryPreferencesPage extends BasePage {
 
     public void verifyTitleListing() {
         Log.info("Verify Title Category Page");
-        Assert.assertTrue(isElementPresent(getTextLocator(titleListingText)));
+        Assert.assertTrue(isWaitElementPresent(getTextLocator(titleListingText)));
     }
 
     public void verifyCategoryListing() {

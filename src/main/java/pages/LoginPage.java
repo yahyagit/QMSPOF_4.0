@@ -57,7 +57,6 @@ public class LoginPage extends BasePage {
         verifyFacebookBtn();
         verifyGmailBtn();
         verifyOlxBtn();
-        verifySmsBtn();
     }
 
     @Step("Verify Facebook Login Button")
@@ -72,6 +71,7 @@ public class LoginPage extends BasePage {
         Assert.assertTrue(isElementPresent(getIdLocator(googleBtnID)));
     }
 
+    @Deprecated
     @Step("Verify Login with SMS Button")
     public void verifySmsBtn() {
         Log.info("Verify Login with SMS Button");
@@ -87,7 +87,7 @@ public class LoginPage extends BasePage {
     @Step("Verify Skip Button")
     public void verifySkipBtn() {
         Log.info("Verify Skip Button");
-        Assert.assertTrue(isElementPresent(getIdLocator(skipBtnID)));
+        Assert.assertTrue(isWaitElementPresent(getIdLocator(skipBtnID)));
     }
 
     @Step("Verify Text Presentations")
@@ -99,7 +99,7 @@ public class LoginPage extends BasePage {
     @Step("Click Facebook Login Button")
     public LoginWithFBModule clickLoginWithFacebook() {
         Log.info("Click FB Button");
-        waitForClickabilityOf(getIdLocator(facebookBtnID), 100);
+        WaitForClickabilityOf(getIdLocator(facebookBtnID), 100);
         clickElement(getIdLocator(facebookBtnID));
         return new LoginWithFBModule(driver);
     }

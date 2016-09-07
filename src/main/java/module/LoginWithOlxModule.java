@@ -56,7 +56,8 @@ public class LoginWithOlxModule extends BasePage {
     @Step("Verify Error Invalid Email")
     public void verifyErrorInvalidEmail() {
         Log.info("verify Error Invalid Email");
-        Assert.assertTrue(getStringText(getIdLocator(errorMessageId)).equalsIgnoreCase(emailNotValidText));
+        Assert.assertTrue(getStringText(getIdLocator(errorMessageId)).equalsIgnoreCase(emailNotValidText),
+                "Result are not same expected : "+emailNotValidText+" But, get error message : "+errorMessageId);
     }
 
     public void verifyErrorBlankEmail() {
