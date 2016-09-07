@@ -4,6 +4,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import module.FilterBySubCategory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
@@ -12,15 +13,19 @@ import utils.Log;
  */
 public class FilterPage extends BasePage {
     public static final String backBtn = "";
-    public static final String searchField = "";
-    public static final String closeBtn = "";
-    public static final String locationBtn = "";
+    public static final String searchField = "com.app.sulley:id/edtSearch";
+    public static final String closeBtn = "com.app.sulley:id/btnClearSearch";
+    public static final String locationBtn = "com.app.sulley:id/btnOpenMap";
     public static final String myLocationBtn = "";
     public static final String minHarga = "";
     public static final String maksHarga = "";
-    public static final String ubahBtn = "";
-    public static final String resetBtn = "";
-    public static final String simpanBtn = "";
+    public static final String terdekatRBtn = "com.app.sulley:id/rbNearest";
+    public static final String terbaruRBtn = "com.app.sulley:id/rbNewest";
+    public static final String termurahRBtn = "com.app.sulley:id/rbCheapest";
+    public static final String termahalRBtn = "com.app.sulley:id/rbMostExpensive";
+    public static final String ubahBtn = "com.app.sulley:id/btnChooseCategory";
+    public static final String resetBtn = "com.app.sulley:id/btnReset";
+    public static final String simpanBtn = "com.app.sulley:id/btnSearch";
     private FilterBySubCategory filterBySubCategory;
 
     public FilterPage(WebDriver driver) {
@@ -38,8 +43,10 @@ public class FilterPage extends BasePage {
         verifyMyLocationButton();
         verifyMinHargaButton();
         verifyMaksHargaButton();
-        verifyContentInUrutkanColumn();
-        verifyContentInKondisiColumn();
+        verifyTerdekatRadioButton();
+        verifyTerbaruRadioButton();
+        verifyTermurahRadioButton();
+        verifyTermahalRadioButton();
         verifyUbahButton();
         verifyResetButton();
         verifySimpanButton();
@@ -48,18 +55,22 @@ public class FilterPage extends BasePage {
 
     public void verifyBackButton()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(backBtn)));
         Log.info("Verify Back Button");
     }
     public void verifySearchField()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(searchField)));
         Log.info("Verify Search Field");
     }
     public void verifyCloseButton()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(closeBtn)));
         Log.info("Verify Close Button");
     }
     public void verifyLocationButton()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(locationBtn)));
         Log.info("Verify Location Button");
     }
     public void verifyMyLocationButton()
@@ -74,31 +85,47 @@ public class FilterPage extends BasePage {
     {
         Log.info("Verify MaksHarga Button");
     }
-    public void verifyContentInUrutkanColumn()
+    public void verifyTerdekatRadioButton()
     {
-        Log.info("Verify Radio Button in Urutkan Column");
+        Assert.assertTrue(isElementPresent(getIdLocator(terdekatRBtn)));
+        Log.info("Verify Terdekat Radio Button");
     }
-    public void verifyContentInKondisiColumn()
+    public void verifyTerbaruRadioButton()
     {
-        Log.info("Verify Radio Button in Kondisi Column");
+        Assert.assertTrue(isElementPresent(getIdLocator(terbaruRBtn)));
+        Log.info("Verify Terbaru Radio Button");
+    }
+    public void verifyTermurahRadioButton()
+    {
+        Assert.assertTrue(isElementPresent(getIdLocator(termurahRBtn)));
+        Log.info("Verify Termurah Radio Button");
+    }
+    public void verifyTermahalRadioButton()
+    {
+        Assert.assertTrue(isElementPresent(getIdLocator(termahalRBtn)));
+        Log.info("Verify Termahal Radio Button");
     }
     public void verifyUbahButton()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(ubahBtn)));
         Log.info("Verify Ubah Button");
     }
     public void verifyResetButton()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(resetBtn)));
         Log.info("Verify Reset Button");
     }
     public void verifySimpanButton()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(simpanBtn)));
         Log.info("Verify Simpan Button");
     }
 
     @Step("Input Keyword in Search Field")
-    public void inputKeywordSearchField()
+    public void inputKeywordSearchField(String keyword)
     {
-        Log.info("Input Keyword in Search Field");
+        Log.info("Input Keyword in Search Field : "+keyword);
+        sendKeysById(getIdLocator(searchField), keyword);
     }
 
     @Step("Click MyLocation Button")

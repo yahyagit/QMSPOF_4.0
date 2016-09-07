@@ -157,6 +157,10 @@ public class BasePage  {
     	return By.xpath("//android.widget.ImageButton[@content-desc='"+locator+"']");
     }
 
+    public By getContentDescLocator(String locator){
+        return By.xpath("//android.widget.TextView[@content-desc='"+locator+"']");
+    }
+
     public By getResourceLocator(String locator){ return By.xpath("//android.widget.ImageButton[@resource-id='"+locator+"']"); }
     
     public By getButtonLocator(String locator){

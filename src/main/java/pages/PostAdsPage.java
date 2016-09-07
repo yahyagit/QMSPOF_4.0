@@ -24,6 +24,7 @@ public class PostAdsPage extends BasePage {
     public static final String rotateBtn = "";
     public static final String judulIklan = "";
     public static final String ulangBtn = "";
+    public static final String batalBtn = "";
     public static final String simpanBtn = "";
     public static final String cropBtnBawah = "";
 
@@ -34,13 +35,28 @@ public class PostAdsPage extends BasePage {
         verifyLiveViewFrame();
         verifyShutterBtn();
         verifyGaleriBtn();
+        Log.info("Verify Content in Camera Page");
+    }
+
+    @Step("Verify Content Additional in Camera Page")
+    public void verifyContentAdditionalInCameraPage()
+    {
         verifyCropBtnAtas();
         verifyRotateBtn();
+        verifyLiveViewFrame();
+        verifyCloseBtn();
         verifyJudulIklan();
         verifyUlangBtn();
         verifySimpanBtn();
+        Log.info("Verify Content Additional in Camera Page");
+    }
+
+    @Step("Verify Content Additional When Cropping Photo")
+    public void verifyContentAdditionalWhenCroppingPhoto()
+    {
+        verifyBatalBtn();
         verifyCropBtnBawah();
-        Log.info("Verify Content in Camera Page");
+        Log.info("Verify Content Additional When Cropping Photo");
     }
 
     public void verifyCloseBtn()
@@ -75,6 +91,10 @@ public class PostAdsPage extends BasePage {
     {
         Log.info("Verify Ulang Button");
     }
+    public void verifyBatalBtn()
+    {
+        Log.info("Verify Batal Button");
+    }
     public void verifySimpanBtn()
     {
         Log.info("Verify Simpan Button");
@@ -92,5 +112,45 @@ public class PostAdsPage extends BasePage {
     public void clickShutterBtn()
     {
         Log.info("Click Shutter Button");
+    }
+
+    public void clickGaleriBtn()
+    {
+        Log.info("Click Galeri Button");
+    }
+
+    public void clickCropBtnAtas()
+    {
+        Log.info("Click Crop Button Bagian Atas");
+    }
+
+    public void clickCropBtnBawah()
+    {
+        Log.info("Click Crop Button Bagian Bawah");
+    }
+
+    public void clickRotateBtn()
+    {
+        Log.info("Click Rotate Button");
+    }
+
+    public void inputIsiJudulIklanDisini()
+    {
+        Log.info("Input Judul Iklan");
+    }
+
+    public void clickUlangBtn()
+    {
+        Log.info("Click Ulang Button");
+    }
+
+    public void clickBatalBtn()
+    {
+        Log.info("Click Batal Button");
+    }
+
+    public void clickSimpanBtn()
+    {
+        Log.info("Click Simpan Button");
     }
 }

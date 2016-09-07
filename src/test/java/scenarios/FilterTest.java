@@ -32,7 +32,7 @@ public class FilterTest extends AndroidSetup{
     @Test(priority = 2)
     public void verifyListingAdsSortedByInputtedKeyword()
     {
-        filterPage.inputKeywordSearchField();
+        filterPage.inputKeywordSearchField("Jazz");
         filterPage.clickSimpanButton();
     }
 
@@ -42,7 +42,7 @@ public class FilterTest extends AndroidSetup{
     @Test(priority = 3)
     public void verifyListingAdsSortedByCurrentLocation()
     {
-        filterPage.inputKeywordSearchField();
+        filterPage.inputKeywordSearchField("Jazz");
         filterPage.clickMyLocationButton();
         filterPage.clickSimpanButton();
     }
@@ -53,7 +53,7 @@ public class FilterTest extends AndroidSetup{
     @Test(priority = 4)
     public void verifyListingAdsSortedByInputtedPriceRange()
     {
-        filterPage.inputKeywordSearchField();
+        filterPage.inputKeywordSearchField("Jazz");
         filterPage.clickMyLocationButton();
         filterPage.inputMinPriceRange();
         filterPage.inputMaxPriceRange();
@@ -66,7 +66,7 @@ public class FilterTest extends AndroidSetup{
     @Test(priority = 5)
     public void verifyListingAdsSortedByUrutkanColumn()
     {
-        filterPage.inputKeywordSearchField();
+        filterPage.inputKeywordSearchField("Jazz");
         filterPage.clickMyLocationButton();
         filterPage.inputMinPriceRange();
         filterPage.inputMaxPriceRange();
@@ -80,7 +80,7 @@ public class FilterTest extends AndroidSetup{
     @Test(priority = 6)
     public void verifyListingAdsSortedByConditionColumn()
     {
-        filterPage.inputKeywordSearchField();
+        filterPage.inputKeywordSearchField("Jazz");
         filterPage.clickMyLocationButton();
         filterPage.inputMinPriceRange();
         filterPage.inputMaxPriceRange();
@@ -88,6 +88,4 @@ public class FilterTest extends AndroidSetup{
         filterPage.clickRadioButtonInKondisiColumn();
         filterPage.clickSimpanButton();
     }
-
-
 }
