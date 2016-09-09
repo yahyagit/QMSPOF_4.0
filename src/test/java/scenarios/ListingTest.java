@@ -1,9 +1,12 @@
 package scenarios;
 
+import listeners.ScreenshootsListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CategoryPreferencesPage;
 import pages.ListingPage;
 import pages.LoginPage;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 import ru.yandex.qatools.allure.annotations.TestCaseId;
 import ru.yandex.qatools.allure.annotations.Title;
@@ -11,6 +14,8 @@ import ru.yandex.qatools.allure.annotations.Title;
 /**
  * Created by NugrohoSantoso on 9/7/16.
  */
+@Listeners(ScreenshootsListener.class)
+@Features("Login Feature")
 public class ListingTest extends AndroidSetup {
     CategoryPreferencesPage categoryPreferencesPage;
     ListingPage listingPage;
@@ -22,15 +27,20 @@ public class ListingTest extends AndroidSetup {
     @Test(priority = 1)
     public void verifyContentDisplayInListingPage()
     {
+        loginPage = new LoginPage(driver);
+        categoryPreferencesPage = new CategoryPreferencesPage(driver);
+        listingPage = new ListingPage(driver);
         loginPage.clickSkipButton();
         categoryPreferencesPage.clickSkipBtn();
+        listingPage.clickAllowAccessLocationButton();
+        listingPage.clickAllowAccessLocationButton();
         listingPage.verifyContentsOfListingPage();
     }
 
     @Stories("As a User I want enable Search ads")
     @Title("Verify Search ads by Keyword in Search Box")
     @TestCaseId("TC_LISTING_06_002")
-    @Test(priority = 2)
+    @Test(priority = 2, enabled = false)
     public void userAbleSearchAdsByInputtedKeyword()
     {
         loginPage.clickSkipButton();
@@ -40,11 +50,23 @@ public class ListingTest extends AndroidSetup {
     @Stories("As a User I want to Click 1Km dari Kamu")
     @Title("Verify User able to redirect to Radius Selection Page")
     @TestCaseId("TC_LISTING_06_004")
-    @Test(priority = 2)
+    @Test(priority = 3, enabled = false)
     public void userAbleToClick1KMDariKamuButton()
     {
         loginPage.clickSkipButton();
         categoryPreferencesPage.clickSkipBtn();
         listingPage.clickJarakDariKamuBtn();
+    }
+
+    @Stories("As A User I want to able Click Filter/Advance on the primary tool")
+    @Title("Verify User able to click Filter on the primary toolbar")
+    @TestCaseId("TC_LISTING_06_021")
+    @Test(priority = 4)
+    public void userAbleToClickFilterButton()
+    {
+        loginPage = new LoginPage(driver);
+        categoryPreferencesPage = new CategoryPreferencesPage(driver);
+        listingPage = new ListingPage(driver);
+        listingPage.clickFilterBtnPrm();
     }
 }
