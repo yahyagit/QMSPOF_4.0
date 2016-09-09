@@ -1,5 +1,6 @@
 package pages;
 
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AndroidFindBys;
@@ -28,6 +29,7 @@ public class CategoryPreferencesPage extends BasePage {
     protected static final String buttonSkipID = "com.app.sulley:id/btnSkip";
     protected static final String checkIconID = "com.app.sulley:id/imgCheckbox";
     protected static final String errorMsgBarID = "com.app.sulley:id/snackbar_text";
+    protected static final String okErrorMSG = "com.app.sulley:id/snackbar_action";
 
     public CategoryPreferencesPage(WebDriver driver) {
         super(driver);
@@ -72,13 +74,28 @@ public class CategoryPreferencesPage extends BasePage {
 
     public void verifySimpanBtn() {
         Log.info("Verify Simpan Button");
+        try{
+            if (!isElementPresent(getTextLocator(buttonSimpanText))) {
+                ((AndroidDriver)driver).scrollTo("SIMPAN");
+            }
+        }catch (NoSuchElementException e){
+            Log.debug("Element Simpan Button not display, need to Scroll");
+        }
         Assert.assertTrue(isElementPresent(getTextLocator(buttonSimpanText)));
+        ((AndroidDriver)driver).swipe(200, 200, 200, driver.manage().window().getSize().getHeight()-10, 10000);
     }
 
     public void clickBackBtn() {}
 
     public ListingPage clickSimpanBtn() {
         Log.info("Click SIMPAN Button");
+        try{
+            if (!isElementPresent(getTextLocator(buttonSimpanText))) {
+                ((AndroidDriver)driver).scrollTo("SIMPAN");
+            }
+        }catch (NoSuchElementException e){
+            Log.debug("Element Simpan Button not display, need to Scroll");
+        }
         clickElement(getTextLocator(buttonSimpanText));
         return new ListingPage(driver);
     }
@@ -138,6 +155,7 @@ public class CategoryPreferencesPage extends BasePage {
     public void verifyErrorMsgDisplay() {
         Log.info("Verify Error Message Display");
         Assert.assertTrue(isElementPresent(getIdLocator(errorMsgBarID)));
+        clickElement(getIdLocator(okErrorMSG));
     }
 
 }

@@ -2,6 +2,7 @@ package module;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.BasePage;
@@ -29,6 +30,7 @@ public class LoginWithFBModule extends BasePage {
     public static final String alertIncorrectCredentials = "com.facebook.katana:id/alertTitle";
     public static final String alertIncorrectCredentialsCss = "div[data-sigil='m_login_notice']";
     public static final String okButton = "com.facebook.katana:id/button1";
+    public static boolean isNative = true;
 
     public LoginWithFBModule(WebDriver driver) {
         super(driver);
@@ -68,8 +70,13 @@ public class LoginWithFBModule extends BasePage {
         sendKeysById(By.cssSelector(passwordCss), passwordText);
     }
     public void clickWebLogin() {
-        Log.info("Click FB Login Button");
+        Log.info("Click FB - WebView - Login Button");
         clickElement(By.cssSelector(loginCss));
+        if (isWaitElementPresent(By.cssSelector(confirmBtnCss))) {
+            clickElement(By.cssSelector(confirmBtnCss));
+            isNative = false;
+            switchNativeCtx();
+        }
     }
 
     public void verifyLoginFormFB() {
@@ -90,13 +97,19 @@ public class LoginWithFBModule extends BasePage {
         Assert.assertTrue(isElementPresent(getIdLocator(loginBtn)));
     }
     public void verifyAlert() {
-        if (isWaitElementPresent(getIdLocator(okButton))) {
+        try {
+            if (isWaitElementPresent(getIdLocator(okButton))) {
+                Log.info("Verify Alert display");
+                Assert.assertTrue(isWaitElementPresent(getIdLocator(alertIncorrectCredentials)));
+                clickElement(getIdLocator(okButton));
+            } else {
+                Log.info("Verify Alert display");
+                Assert.assertTrue(isWaitElementPresent(By.cssSelector(alertIncorrectCredentialsCss)));
+                clickElement(By.cssSelector(emailCss));
+            }
+        }catch (NoSuchElementException e) {
             Log.info("Verify Alert display");
-            Assert.assertTrue(isWaitElementPresent(getIdLocator(alertIncorrectCredentials)));
-            clickElement(getIdLocator(okButton));
-        } else {
-            Log.info("Verify Alert display");
-            Assert.assertTrue(isElementPresent(By.cssSelector(alertIncorrectCredentialsCss)));
+            Assert.assertTrue(isWaitElementPresent(By.cssSelector(alertIncorrectCredentialsCss)));
             clickElement(By.cssSelector(emailCss));
         }
     }
@@ -146,15 +159,19 @@ public class LoginWithFBModule extends BasePage {
     }
 
     public void removeLoginApps_logout() {
-        String hamburgerBar = "com.facebook.katana:id/bookmarks_tab";
-        String accountSettings = "Account Settings";
-        String logout = "Log Out";
-        String okId = "com.facebook.katana:id/button1";
-        ((AndroidDriver)driver).startActivity("com.facebook.katana", "com.facebook.katana.LoginActivity");
-        clickElement(getIdLocator(hamburgerBar));
-        ((AndroidDriver)driver).scrollTo(logout);
-        clickElement(By.xpath("//android.view.ViewGroup[@content-desc='"+logout+"']"));
-        clickElement(getIdLocator(okId));
+        if (!isNative) {
+            Log.debug("Success FB Test Login");
+        } else {
+            String hamburgerBar = "com.facebook.katana:id/bookmarks_tab";
+            String accountSettings = "Account Settings";
+            String logout = "Log Out";
+            String okId = "com.facebook.katana:id/button1";
+            ((AndroidDriver)driver).startActivity("com.facebook.katana", "com.facebook.katana.LoginActivity");
+            clickElement(getIdLocator(hamburgerBar));
+            ((AndroidDriver)driver).scrollTo(logout);
+            clickElement(By.xpath("//android.view.ViewGroup[@content-desc='"+logout+"']"));
+            clickElement(getIdLocator(okId));
+        }
     }
 
 }
