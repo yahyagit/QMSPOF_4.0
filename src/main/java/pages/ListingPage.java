@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AndroidFindBys;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import module.FilterByMapsLocationModule;
+import module.HamburgerBarModule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -156,11 +157,11 @@ public class ListingPage extends BasePage{
     }
 
     @Step("Click Hamburger Primary Bar Bar")
-    public HamburgerBarPage clickHamburgerBar()
+    public HamburgerBarModule clickHamburgerBar()
     {
         Log.info("Click Hamburger Bar");
         clickElement(getIdLocator(hamburgerBar));
-        return new HamburgerBarPage(driver);
+        return new HamburgerBarModule(driver);
     }
 
     @Step("Click Search Primary Bar Button")

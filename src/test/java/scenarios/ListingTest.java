@@ -1,6 +1,7 @@
 package scenarios;
 
 import listeners.ScreenshootsListener;
+import module.HamburgerBarModule;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CategoryPreferencesPage;
@@ -15,11 +16,12 @@ import ru.yandex.qatools.allure.annotations.Title;
  * Created by NugrohoSantoso on 9/7/16.
  */
 @Listeners(ScreenshootsListener.class)
-@Features("Login Feature")
+@Features("Listing Feature")
 public class ListingTest extends AndroidSetup {
     CategoryPreferencesPage categoryPreferencesPage;
     ListingPage listingPage;
     LoginPage loginPage;
+    HamburgerBarModule hamburgerBarModule;
 
     @Stories("As a User I want to See Content in ListingPage")
     @Title("Verify System able to Display Content in ListingPage")
@@ -35,6 +37,18 @@ public class ListingTest extends AndroidSetup {
         listingPage.clickAllowAccessLocationButton();
         listingPage.clickAllowAccessLocationButton();
         listingPage.verifyContentsOfListingPage();
+    }
+
+    @Stories("As A User i want to able see Content in Navigation Menu")
+    @Title("Verify System display All Content in Navigation Menu")
+    @TestCaseId("TC_LISTING_06_027")
+    @Test(priority = 2)
+    public void verifyAllContentsInHamburgerBar()
+    {
+        listingPage = new ListingPage(driver);
+        hamburgerBarModule = new HamburgerBarModule(driver);
+        listingPage.clickHamburgerBar();
+        hamburgerBarModule.verifyAllContentsInHamburgerBar();
     }
 
     @Stories("As a User I want enable Search ads")
@@ -61,7 +75,7 @@ public class ListingTest extends AndroidSetup {
     @Stories("As A User I want to able Click Filter/Advance on the primary tool")
     @Title("Verify User able to click Filter on the primary toolbar")
     @TestCaseId("TC_LISTING_06_021")
-    @Test(priority = 4)
+    @Test(priority = 5)
     public void userAbleToClickFilterButton()
     {
         loginPage = new LoginPage(driver);
