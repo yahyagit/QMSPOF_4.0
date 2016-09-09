@@ -95,7 +95,7 @@ public class BasePage  {
      try {
     	 waitForVisibilityOf(by);
     	 return true;
-     } catch (NoSuchElementException e){
+     } catch (NoSuchElementException | TimeoutException e){
     	 return false;
      }
 
