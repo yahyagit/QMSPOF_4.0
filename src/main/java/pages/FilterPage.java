@@ -1,5 +1,9 @@
 package pages;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AndroidFindBys;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import module.FilterBySubCategory;
 import org.openqa.selenium.WebDriver;
@@ -8,13 +12,15 @@ import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
+import java.util.List;
+
 /**
  * Created by NugrohoSantoso on 9/2/16.
  */
 public class FilterPage extends BasePage {
     public static final String backBtn = "";
     public static final String searchField = "com.app.sulley:id/edtSearch";
-    public static final String closeBtn = "com.app.sulley:id/btnClearSearch";
+    public static final String cancelBtn = "com.app.sulley:id/btnClearSearch";
     public static final String locationBtn = "com.app.sulley:id/btnOpenMap";
     public static final String myLocationBtn = "";
     public static final String minHarga = "";
@@ -31,14 +37,13 @@ public class FilterPage extends BasePage {
     public FilterPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
+    };
 
     @Step("Verify System Display Content in Filter Page")
     public void verifyAllContentOfFilterPage()
     {
         verifyBackButton();
         verifySearchField();
-        verifyCloseButton();
         verifyLocationButton();
         verifyMyLocationButton();
         verifyMinHargaButton();
@@ -52,10 +57,9 @@ public class FilterPage extends BasePage {
         verifySimpanButton();
         Log.info("Verify All Content in Filter Page");
     }
-
     public void verifyBackButton()
     {
-        Assert.assertTrue(isElementPresent(getIdLocator(backBtn)));
+//        Assert.assertTrue(isElementPresent(getIdLocator(backBtn)));
         Log.info("Verify Back Button");
     }
     public void verifySearchField()
@@ -63,10 +67,10 @@ public class FilterPage extends BasePage {
         Assert.assertTrue(isElementPresent(getIdLocator(searchField)));
         Log.info("Verify Search Field");
     }
-    public void verifyCloseButton()
+    public void verifyCancelButton()
     {
-        Assert.assertTrue(isElementPresent(getIdLocator(closeBtn)));
-        Log.info("Verify Close Button");
+        Assert.assertTrue(isElementPresent(getIdLocator(cancelBtn)));
+        Log.info("Verify Cancel Button");
     }
     public void verifyLocationButton()
     {
@@ -105,8 +109,10 @@ public class FilterPage extends BasePage {
         Assert.assertTrue(isElementPresent(getIdLocator(termahalRBtn)));
         Log.info("Verify Termahal Radio Button");
     }
+
     public void verifyUbahButton()
     {
+        hideKeyboardPopUp();
         Assert.assertTrue(isElementPresent(getIdLocator(ubahBtn)));
         Log.info("Verify Ubah Button");
     }
@@ -121,11 +127,24 @@ public class FilterPage extends BasePage {
         Log.info("Verify Simpan Button");
     }
 
+    @Step("Click Search Field")
+    public void clickSearchField()
+    {
+        Log.info("Click Search Field");
+        clickElement(getIdLocator(searchField));
+    }
+
     @Step("Input Keyword in Search Field")
     public void inputKeywordSearchField(String keyword)
     {
         Log.info("Input Keyword in Search Field : "+keyword);
         sendKeysById(getIdLocator(searchField), keyword);
+    }
+
+    @Step("Click Cancel Button in Search Field")
+    public void clickCancelButtonSearchField()
+    {
+        clickElement(getIdLocator(cancelBtn));
     }
 
     @Step("Click MyLocation Button")
@@ -152,10 +171,11 @@ public class FilterPage extends BasePage {
         Log.info("Input MaxPrice Range");
     }
 
-    @Step("Click One of Urutkan Column")
-    public void clickRadioButtonInUrutkanColumn()
+    @Step("Click Terdekat Radio Button in Urutkan Column")
+    public void clickRadioButtonTerdekatInUrutkanColumn()
     {
-        Log.info("Click One of Urutkan Column");
+        clickElement(getIdLocator(terdekatRBtn));
+        Log.info("Click Terdekat Radio Button in Urutkan Column");
     }
 
     @Step("Click One of Kondisi Column")
@@ -185,6 +205,7 @@ public class FilterPage extends BasePage {
     @Step("Click Reset Button")
     public void clickResetButton()
     {
+        clickElement(getIdLocator(resetBtn));
         Log.info("Click Reset Button");
     }
 

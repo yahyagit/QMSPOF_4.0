@@ -7,6 +7,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import module.FilterByMapsLocationModule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.FindElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -20,12 +21,12 @@ import java.util.List;
  */
 public class ListingPage extends BasePage{
 
-    public static final String primaryToolBar = "com.app.sulley:id/toolbar";
     public static final String hamburgerBar = "Navigate up";
     public static final String titlePage = "Sulley";
     public static final String searchBtnPrmID = "com.app.sulley:id/search_item";
     public static final String filterBtnPrmID = "com.app.sulley:id/filter_item";
     public static final String jarakDariKamuBtnID = "com.app.sulley:id/distance";
+    public static final String locationAllowAccessBtn = "com.android.packageinstaller:id/permission_allow_button";
     public static final String gambarIklan = "";
     public static final String hargaIklan = "";
     public static final String homeBtnBtmID = "com.app.sulley:id/tab_listing";
@@ -40,10 +41,11 @@ public class ListingPage extends BasePage{
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBys({
-        @AndroidFindBy(id = primaryToolBar)
-    })
-    protected List<AndroidElement> primaryToolList;
+    @Step("Click Allow Access Google Location Button ")
+    public void clickAllowAccessLocationButton() {
+        isAutoAcept(getIdLocator(locationAllowAccessBtn));
+        Log.info("Click Allow Access Location Button");
+    }
 
     @Step("Verify All Contents of ListingPage")
     public void verifyContentsOfListingPage()
@@ -67,89 +69,90 @@ public class ListingPage extends BasePage{
     @Step("Verify Hamburger Bar")
     public void verifyHamburgerBar()
     {
-        Assert.assertTrue(isElementPresent(getContentDescLocator(hamburgerBar)));
-        Log.info("verifyHamburgerBar");
+        WaitForClickabilityOf(getContentLocator(hamburgerBar), 40);
+        Assert.assertTrue(isWaitElementPresent(getContentLocator(hamburgerBar)));
+        Log.info("Verify Hamburger Bar");
     }
 
     @Step("Verify Title Page")
     public void verifyTitlePage()
     {
         Assert.assertTrue(isElementPresent(getTextLocator(titlePage)));
-        Log.info("verifyTitlePage");
+        Log.info("Verify Title Page");
     }
 
     @Step("Verify Search Button")
     public void verifySearchBtnPrm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(searchBtnPrmID)));
-        Log.info("verifySearchButton");
+        Log.info("Verify Search Button");
     }
 
     @Step("Verify Filter Button")
     public void verifyFilterBtnPrm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(filterBtnPrmID)));
-        Log.info("verifyFilterButton");
+        Log.info("Verify Filter Button");
     }
 
     @Step("Verify Jarak Dari Kamu Button")
     public void verifyJarakDariKamuBtnBtm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(jarakDariKamuBtnID)));
-        Log.info("verifyJarakDariKamuButton");
+        Log.info("Verify Jarak Dari Kamu Button");
     }
 
     @Step("Verify Gambar Iklan")
     public void verifyGambarIklan()
     {
-        Log.info("verifyGambarIklan");
+        Log.info("Verify Gambar Iklan");
     }
 
     @Step("Verify Harga Iklan")
     public void verifyHargaIklan()
     {
-        Log.info("verifyHargaIklan");
+        Log.info("Verify Harga Iklan");
     }
 
     @Step("Verify Home Button")
     public void verifyHomeBtnBtm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(homeBtnBtmID)));
-        Log.info("verifyHomeButton");
+        Log.info("Verify Home Button");
     }
 
     @Step("Verify Kategori Button")
     public void verifyKategoriBtnBtm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(kategoriBtnBtmID)));
-        Log.info("verifyKategoriButton");
+        Log.info("Verify Kategori Button");
     }
 
     @Step("Verify Jual Button")
     public void verifyJualBtnBtm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(jualBtnBtmID)));
-        Log.info("verifyJualButton");
+        Log.info("Verify Jual Button");
     }
 
     @Step("Verify Pesan Button")
     public void verifyPesanBtnBtm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(pesanBtnBtmID)));
-        Log.info("verifyPesanButton");
+        Log.info("Verify Pesan Button");
     }
 
     @Step("Verify Pesan Notif")
     public void verifyPesanNotif()
     {
-        Log.info("verifyPesanNotif");
+        Log.info("Verify Pesan Notif");
     }
 
     @Step("Verify Favorit Button")
     public void verifyFavoritBtnBtm()
     {
         Assert.assertTrue(isElementPresent(getIdLocator(favoritBtnBtmId)));
-        Log.info("verifyFavoritButton");
+        Log.info("Verify Favorit Button");
     }
 
     @Step("Click Hamburger Primary Bar Bar")

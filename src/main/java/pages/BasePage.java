@@ -4,12 +4,7 @@ import athena.Sinon;
 import com.google.common.base.Function;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -19,7 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Attachment;
 
-import org.openqa.selenium.TakesScreenshot;
 import utils.Log;
 
 import java.io.File;
@@ -55,6 +49,11 @@ public class BasePage  {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+
+    protected void hideKeyboardPopUp()
+    {
+        ((AndroidDriver)driver).hideKeyboard();
+    }
     
     protected void WaitForClickabilityOf(By locator,int time){
     	WebDriverWait wait = new WebDriverWait(driver, time);
@@ -72,6 +71,25 @@ public class BasePage  {
 			return false;
 		}
 	}
+
+    public boolean isAutoAcept(By by)
+    {
+        try
+        {
+            if (driver.findElement(by).isDisplayed()) {
+                isWaitElementPresent(by);
+                clickElement(by);
+                return true;
+            }
+            else {
+                return true;
+            }
+        }
+        catch (NoSuchElementException | TimeoutException e)
+        {
+            return true;
+        }
+    }
     
     protected boolean isWaitElementPresent(By by){
      try {
@@ -80,7 +98,7 @@ public class BasePage  {
      } catch (NoSuchElementException e){
     	 return false;
      }
-    	
+
     }
     
     protected void clickElement(By by){

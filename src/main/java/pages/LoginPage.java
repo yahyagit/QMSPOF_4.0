@@ -128,6 +128,7 @@ public class LoginPage extends BasePage {
     @Step("Click Skip Login Button")
     public CategoryPreferencesPage clickSkipButton() {
         Log.info("Click Skip Login Button");
+        WaitForClickabilityOf(getIdLocator(skipBtnID), 100);
         clickElement(getIdLocator(skipBtnID));
         return new CategoryPreferencesPage(driver);
     }
