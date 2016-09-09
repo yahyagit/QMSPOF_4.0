@@ -18,7 +18,6 @@ import ru.yandex.qatools.allure.annotations.Title;
 @Listeners(ScreenshootsListener.class)
 @Features("Login Feature")
 public class LoginOLXTest extends AndroidSetup {
-    private LoginWithOlxModule loginOlx;
     private CategoryPreferencesPage categoryPreferencesPage;
 
     // login With OLX Login Page
@@ -29,7 +28,7 @@ public class LoginOLXTest extends AndroidSetup {
     @Test(priority = 1)
     public void userAbleToContentOLXLogin() {
         LoginPage loginPage = new LoginPage(driver);
-        loginOlx = loginPage.clickLoginWithOlx();
+        LoginWithOlxModule loginOlx = loginPage.clickLoginWithOlx();
         loginOlx.verifyLoginOlxContents();
     }
 
@@ -38,6 +37,7 @@ public class LoginOLXTest extends AndroidSetup {
     @TestCaseId("TC_LOGIN_04_002")
     @Test(priority = 6, enabled = false)
     public void userNotAbleToLoginWithUnregisteredEmail() {
+        LoginWithOlxModule loginOlx = new LoginWithOlxModule(driver);
         loginOlx.inputEmail("remote@gmail.com");
         loginOlx.inputPassword("Welcome123");
         loginOlx.clickLoginWithOlxBtn();
@@ -50,6 +50,7 @@ public class LoginOLXTest extends AndroidSetup {
     @TestCaseId("TC_LOGIN_04_003")
     @Test(priority = 3)
     public void userNotAbleToLoginWithIncorrectEmailFormat() {
+        LoginWithOlxModule loginOlx = new LoginWithOlxModule(driver);
         loginOlx.inputEmail("remote");
         loginOlx.inputPassword("hoho");
         loginOlx.clickLoginWithOlxBtn();
@@ -61,6 +62,7 @@ public class LoginOLXTest extends AndroidSetup {
     @TestCaseId("TC_LOGIN_04_004")
     @Test(priority = 4, enabled = false)
     public void userNotAbleToLoginWithInvalidCredentials() {
+        LoginWithOlxModule loginOlx = new LoginWithOlxModule(driver);
         loginOlx.inputEmail("remote@gmail.com");
         loginOlx.inputPassword("Welcome123");
         loginOlx.clickLoginWithOlxBtn();
@@ -72,6 +74,7 @@ public class LoginOLXTest extends AndroidSetup {
     @TestCaseId("TC_LOGIN_04_006")
     @Test(priority = 2)
     public void userNotAbleToLoginWithBlankCredentials() {
+        LoginWithOlxModule loginOlx = new LoginWithOlxModule(driver);
         loginOlx.clickLoginWithOlxBtn();
         loginOlx.verifyErrorBlankEmail();
     }
@@ -81,8 +84,9 @@ public class LoginOLXTest extends AndroidSetup {
     @TestCaseId("TC_LOGIN_04_005")
     @Test(priority = 5)
     public void userAbleToLoginWithValidCredentials() {
-        loginOlx.inputEmail("remote@gmail.com");
-        loginOlx.inputPassword("Welcome123");
+        LoginWithOlxModule loginOlx = new LoginWithOlxModule(driver);
+        loginOlx.inputEmail("krisna.parahita@olx.co.id");
+        loginOlx.inputPassword("testing");
         loginOlx.clickLoginWithOlxBtn();
         categoryPreferencesPage = loginOlx.verifySetCategoryPreferences();
         categoryPreferencesPage.verifyTitleListing();

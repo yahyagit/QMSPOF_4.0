@@ -38,6 +38,7 @@ public class LoginWithOlxModule extends BasePage {
     @Step("Verify Email Field")
     public void verifyEmailField() {
         Log.info("verify Email Field");
+        WaitForClickabilityOf(getIdLocator(emailField), 100);
         Assert.assertTrue(isWaitElementPresent(getIdLocator(emailField)));
     }
 

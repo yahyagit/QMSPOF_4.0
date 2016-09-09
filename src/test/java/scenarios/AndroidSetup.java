@@ -43,7 +43,10 @@ public class AndroidSetup extends InstanceDriver {
         //No Reset Apps
         capabilities.setCapability("noReset", false);
         capabilities.setCapability("fullReset", true);
-        
+
+        //No Keyboard Layout
+        capabilities.setCapability("unicodeKeyboard", "true");
+
         //other caps
         capabilities.setCapability("app", app.getAbsolutePath());
         driver =  new AndroidDriver(new URL(Constants.hubIP), capabilities);
