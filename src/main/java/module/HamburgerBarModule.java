@@ -13,6 +13,7 @@ import utils.Log;
  */
 public class HamburgerBarModule extends BasePage {
 
+    public static final String avatarSaya = "";
     public static final String profilSayaBtn = "Profil Saya";
     public static final String iklanSayaBtn = "Iklan Saya";
     public static final String saldoOLXBtn = "Saldo OLX";
@@ -28,6 +29,7 @@ public class HamburgerBarModule extends BasePage {
     @Step("Verify All Contents In HamburgerBar")
     public void verifyAllContentsInHamburgerBar()
     {
+        verifyAvatarSaya();
         verifyProfilSayaBtn();
         verifyIklanSayaBtn();
         verifySaldoOLXBtn();
@@ -35,9 +37,14 @@ public class HamburgerBarModule extends BasePage {
         verifyTentangOLXBtn();
     }
 
+    public void verifyAvatarSaya()
+    {
+        WaitForClickabilityOf(getTextLocator(avatarSaya), 100);
+        Assert.assertTrue(isElementPresent(getIdLocator(avatarSaya)));
+        Log.info("Verify Avatar Profil");
+    }
     public void verifyProfilSayaBtn()
     {
-        WaitForClickabilityOf(getTextLocator(profilSayaBtn), 100);
         Assert.assertTrue(isElementPresent(getTextLocator(profilSayaBtn)));
         Log.info("Verify Profil Saya Button");
     }
