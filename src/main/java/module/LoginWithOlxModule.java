@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.BasePage;
 import pages.CategoryPreferencesPage;
+import pages.ListingPage;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
@@ -104,6 +105,12 @@ public class LoginWithOlxModule extends BasePage {
     public CategoryPreferencesPage verifySetCategoryPreferences() {
         Log.info("verify Set Catefory Preferences");
         return new CategoryPreferencesPage(driver);
+    }
+
+    @Step("Verify Listing Page")
+    public ListingPage verifyListingPage() {
+        Log.info("verify Listing Page");
+        return new ListingPage(driver);
     }
 
 }

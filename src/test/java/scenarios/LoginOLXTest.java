@@ -5,6 +5,7 @@ import module.LoginWithOlxModule;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CategoryPreferencesPage;
+import pages.ListingPage;
 import pages.LoginPage;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -19,6 +20,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 @Features("Login Feature")
 public class LoginOLXTest extends AndroidSetup {
     private CategoryPreferencesPage categoryPreferencesPage;
+    private ListingPage listingPage;
 
     // login With OLX Login Page
 
@@ -88,8 +90,8 @@ public class LoginOLXTest extends AndroidSetup {
         loginOlx.inputEmail("krisna.parahita@olx.co.id");
         loginOlx.inputPassword("testing");
         loginOlx.clickLoginWithOlxBtn();
-        categoryPreferencesPage = loginOlx.verifySetCategoryPreferences();
-        categoryPreferencesPage.verifyTitleListing();
+        listingPage = loginOlx.verifyListingPage();
+        listingPage.verifyContentsOfListingPage();
     }
 
     @Stories("As A User I Want be Able to Logout After Success Login by OLX Account")

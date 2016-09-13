@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.BasePage;
 import pages.Constants;
+import pages.ListingPage;
 import ru.yandex.qatools.allure.annotations.Step;
 import utils.Log;
 
@@ -102,5 +103,10 @@ public class LoginWithGplusModule extends BasePage {
     public void verifySetCategoryPreferences() {
         Log.info("verifySetCategoryPreferences");
         Assert.assertTrue(isElementPresent(getIdLocator(categoryPreferences)));
+    }
+
+    @Step("Verify Listing Page")
+    public ListingPage verifyListingPage() {
+        return new ListingPage(driver);
     }
 }
