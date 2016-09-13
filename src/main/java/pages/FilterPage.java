@@ -19,19 +19,19 @@ import java.util.List;
  */
 public class FilterPage extends BasePage {
     public static final String backBtn = "";
-    public static final String searchField = "com.app.sulley:id/edtSearch";
-    public static final String cancelBtn = "com.app.sulley:id/btnClearSearch";
-    public static final String locationBtn = "com.app.sulley:id/btnOpenMap";
+    public static final String searchField = "com.app.tokobagus.betterb:id/edtSearch";
+    public static final String cancelBtn = "com.app.tokobagus.betterb:id/btnClearSearch";
+    public static final String locationBtn = "com.app.tokobagus.betterb:id/btnOpenMap";
     public static final String myLocationBtn = "";
-    public static final String minHarga = "";
-    public static final String maksHarga = "";
-    public static final String terdekatRBtn = "com.app.sulley:id/rbNearest";
-    public static final String terbaruRBtn = "com.app.sulley:id/rbNewest";
-    public static final String termurahRBtn = "com.app.sulley:id/rbCheapest";
-    public static final String termahalRBtn = "com.app.sulley:id/rbMostExpensive";
-    public static final String ubahBtn = "com.app.sulley:id/btnChooseCategory";
-    public static final String resetBtn = "com.app.sulley:id/btnReset";
-    public static final String simpanBtn = "com.app.sulley:id/btnSearch";
+    public static final String minHarga = "com.app.tokobagus.betterb:id/edtMinPrice";
+    public static final String maksHarga = "com.app.tokobagus.betterb:id/edtMaxPrice";
+    public static final String terdekatRBtn = "com.app.tokobagus.betterb:id/rbNearest";
+    public static final String terbaruRBtn = "com.app.tokobagus.betterb:id/rbNewest";
+    public static final String termurahRBtn = "com.app.tokobagus.betterb:id/rbCheapest";
+    public static final String termahalRBtn = "com.app.tokobagus.betterb:id/rbMostExpensive";
+    public static final String ubahBtn = "com.app.tokobagus.betterb:id/btnChooseCategory";
+    public static final String resetBtn = "com.app.tokobagus.betterb:id/btnReset";
+    public static final String simpanBtn = "com.app.tokobagus.betterb:id/btnSearch";
     private FilterBySubCategory filterBySubCategory;
 
     public FilterPage(WebDriver driver) {

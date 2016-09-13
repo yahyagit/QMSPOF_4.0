@@ -24,18 +24,18 @@ public class ListingPage extends BasePage{
 
     public static final String hamburgerBar = "Navigate up";
     public static final String titlePage = "Sulley";
-    public static final String searchBtnPrmID = "com.app.sulley:id/search_item";
-    public static final String filterBtnPrmID = "com.app.sulley:id/filter_item";
-    public static final String jarakDariKamuBtnID = "com.app.sulley:id/distance";
+    public static final String searchBtnPrmID = "com.app.tokobagus.betterb:id/search_item";
+    public static final String filterBtnPrmID = "com.app.tokobagus.betterb:id/filter_item";
+    public static final String jarakDariKamuBtnID = "com.app.tokobagus.betterb:id/distance";
     public static final String locationAllowAccessBtn = "com.android.packageinstaller:id/permission_allow_button";
-    public static final String gambarIklan = "";
-    public static final String hargaIklan = "";
-    public static final String homeBtnBtmID = "com.app.sulley:id/tab_listing";
-    public static final String kategoriBtnBtmID = "com.app.sulley:id/tab_category";
-    public static final String jualBtnBtmID = "com.app.sulley:id/tab_postad";
-    public static final String pesanBtnBtmID = "com.app.sulley:id/tab_Messages";
+    public static final String gambarIklan = "com.app.tokobagus.betterb:id/iv_ad_item_image";
+    public static final String hargaIklan = "com.app.tokobagus.betterb:id/tv_ad_item_price";
+    public static final String homeBtnBtmID = "com.app.tokobagus.betterb:id/tab_listing";
+    public static final String kategoriBtnBtmID = "com.app.tokobagus.betterb:id/tab_category";
+    public static final String jualBtnBtmID = "com.app.tokobagus.betterb:id/tab_postad";
+    public static final String pesanBtnBtmID = "com.app.tokobagus.betterb:id/tab_Messages";
     public static final String pesanNotif = "";
-    public static final String favoritBtnBtmId = "com.app.sulley:id/tab_Favorite";
+    public static final String favoritBtnBtmId = "com.app.tokobagus.betterb:id/tab_Favorite";
 
     public ListingPage(WebDriver driver) {
         super(driver);
@@ -106,12 +106,14 @@ public class ListingPage extends BasePage{
     @Step("Verify Gambar Iklan")
     public void verifyGambarIklan()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(gambarIklan)));
         Log.info("Verify Gambar Iklan");
     }
 
     @Step("Verify Harga Iklan")
     public void verifyHargaIklan()
     {
+        Assert.assertTrue(isElementPresent(getIdLocator(hargaIklan)));
         Log.info("Verify Harga Iklan");
     }
 

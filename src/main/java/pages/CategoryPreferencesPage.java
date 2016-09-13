@@ -23,13 +23,13 @@ public class CategoryPreferencesPage extends BasePage {
     protected static final String linearLayout = "android.widget.LinearLayout";
     protected static final String titleListingText = "Pilih Kategori Favorit Kamu";
     protected static final String categoryListingID = "com.app.sulley/rvCategory";
-    protected static final String cardViewID = "com.app.sulley:id/card_view";
-    protected static final String categoryTitle = "com.app.sulley:id/tvCategoryTitle";
+    protected static final String cardViewID = "com.app.tokobagus.betterb:id/card_view";
+    protected static final String categoryTitle = "com.app.tokobagus.betterb:id/tvCategoryTitle";
     protected static final String buttonSimpanText = "SIMPAN";
-    protected static final String buttonSkipID = "com.app.sulley:id/btnSkip";
-    protected static final String checkIconID = "com.app.sulley:id/imgCheckbox";
-    protected static final String errorMsgBarID = "com.app.sulley:id/snackbar_text";
-    protected static final String okErrorMSG = "com.app.sulley:id/snackbar_action";
+    protected static final String buttonSkipID = "com.app.tokobagus.betterb:id/btnSkip";
+    protected static final String checkIconID = "com.app.tokobagus.betterb:id/imgCheckbox";
+    protected static final String errorMsgBarID = "com.app.tokobagus.betterb:id/snackbar_text";
+    protected static final String okErrorMSG = "com.app.tokobagus.betterb:id/snackbar_action";
 
     public CategoryPreferencesPage(WebDriver driver) {
         super(driver);

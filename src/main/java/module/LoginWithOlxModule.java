@@ -12,11 +12,11 @@ import utils.Log;
  */
 public class LoginWithOlxModule extends BasePage {
     public static String titlePage = "Masuk dengan akun OLX";
-    public static String emailField = "com.app.sulley:id/entranceLogin_txtEmail";
-    public static String passField = "com.app.sulley:id/entranceLogin_txtPass";
+    public static String emailField = "com.app.tokobagus.betterb:id/entranceLogin_txtEmail";
+    public static String passField = "com.app.tokobagus.betterb:id/entranceLogin_txtPass";
     public static String showPass = "";
-    public static String loginOlxBtn = "com.app.sulley:id/entranceLogin_btnLogin";
-    public static String errorMessageId = "com.app.sulley:id/snackbar_text";
+    public static String loginOlxBtn = "com.app.tokobagus.betterb:id/entranceLogin_btnLogin";
+    public static String errorMessageId = "com.app.tokobagus.betterb:id/snackbar_text";
     public static String emailBlankErrorText = "Kolom email tidak boleh kosong";
     public static String passBlankErrorText = "Kolom password tidak boleh kosong";
     public static String emailNotValidText = "Email tidak valid";

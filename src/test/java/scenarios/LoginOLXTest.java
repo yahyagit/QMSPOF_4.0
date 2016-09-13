@@ -42,7 +42,6 @@ public class LoginOLXTest extends AndroidSetup {
         loginOlx.inputPassword("Welcome123");
         loginOlx.clickLoginWithOlxBtn();
         loginOlx.verifyErrorInvalidEmail();
-
     }
 
     @Stories("As A User I Will not be Able to Login")

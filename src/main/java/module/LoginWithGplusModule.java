@@ -27,7 +27,7 @@ public class LoginWithGplusModule extends BasePage {
     public static final String permissionDetailsInfo = "com.google.android.gms:id/scope_description_label";
     public static final String allowBtn = "com.google.android.gms:id/accept_button";
     public static final String denyBtn = "com.google.android.gms:id/cancel_button";
-    public static final String categoryPreferences = "com.app.sulley:id/rvCategory";
+    public static final String categoryPreferences = "com.app.tokobagus.betterb:id/rvCategory";
 
     public LoginWithGplusModule(WebDriver driver) {
         super(driver);
