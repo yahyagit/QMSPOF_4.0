@@ -5,7 +5,7 @@ import module.LoginWithFBModule;
 import module.LoginWithGplusModule;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.CategoryPreferencesPage;
+import pages.ListingPage;
 import pages.LoginPage;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
@@ -53,10 +53,10 @@ public class LoginFBTest extends AndroidSetup {
     @Title("Verify User Able to Redirect to Destination Page After Success Login")
     @TestCaseId("TC_LBF_02_004, TC_LBF_02_005")
     @Test(priority = 4)
-    public void userAbleToSetPreferencesAfterSuccessFBLogin() {
+    public void userAbleGoToListingAfterSuccessFBLogin() {
         LoginWithFBModule fbLogin = new LoginWithFBModule(driver);
-        CategoryPreferencesPage category = fbLogin.verifySetCategoryPrefefences();
-        category.verifyCategoryListing();
+        ListingPage listingPage = fbLogin.verifyListingPage();
+        listingPage.verifyContentsOfListingPage();
     }
 
     @Stories("As A User i want be able to Logout after Success Login FB")
@@ -97,12 +97,6 @@ public class LoginFBTest extends AndroidSetup {
     @TestCaseId("TC_LBG_03_002")
     @Test(priority = 7)
     public void userAbleToLoginWithValidGplusCredentials() {}
-
-    @Stories("As A User I want Set Preferences Category After Success Login")
-    @Title("Verify User Able to Set Preferences Category After Success Login")
-    @TestCaseId("TC_LBG_03_005, TC_LBG_03_004")
-    @Test(priority = 7)
-    public void userAbleToSetPreferencesAfterSuccessGplusLogin() {}
     public void userAbleToLogoutAfterSuccessGplusLogin() {}
 
     // login with SMS

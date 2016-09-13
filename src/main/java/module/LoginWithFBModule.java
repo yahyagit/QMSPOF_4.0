@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.BasePage;
 import pages.CategoryPreferencesPage;
+import pages.ListingPage;
 import utils.Log;
 
 import java.util.Set;
@@ -119,8 +120,13 @@ public class LoginWithFBModule extends BasePage {
     public void verifyConfirmBtn() {}
     public void verifyAccessFBInfo() {}
 
+    @Deprecated
     public CategoryPreferencesPage verifySetCategoryPrefefences() {
         return new CategoryPreferencesPage(driver);
+    }
+
+    public ListingPage verifyListingPage() {
+        return new ListingPage(driver);
     }
 
     public void loginFb(String emailText, String passText) {

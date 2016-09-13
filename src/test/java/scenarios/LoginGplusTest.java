@@ -4,8 +4,12 @@ import listeners.ScreenshootsListener;
 import module.LoginWithGplusModule;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.ListingPage;
 import pages.LoginPage;
-import ru.yandex.qatools.allure.annotations.*;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
+import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * Created by NugrohoSantoso on 8/26/16.
@@ -54,10 +58,11 @@ public class LoginGplusTest extends AndroidSetup {
     @Title("Verify User Able to Set Preferences Category After Success Login")
     @TestCaseId("TC_LBG_03_005, TC_LBG_03_004")
     @Test(priority = 8)
-    public void userAbleToSetPreferencesAfterSuccessGplusLogin() {
+    public void userAbleGoToListingAfterSuccessGplusLogin() {
         LoginPage loginPage = new LoginPage(driver);
-        loginWithGplusModule = loginPage.clickLoginWithGPlus();
-        loginWithGplusModule.verifySetCategoryPreferences();
+        LoginWithGplusModule gplus = loginPage.clickLoginWithGPlus();
+        ListingPage listingPage = gplus.verifyListingPage();
+        listingPage.verifyContentsOfListingPage();
     }
 
     @Stories("As A User I want able to Logout after Success Login")

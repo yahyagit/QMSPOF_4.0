@@ -15,6 +15,7 @@ import ru.yandex.qatools.allure.annotations.Title;
  * Created by buddyarifin on 8/11/16.
  */
 
+@Deprecated
 @Listeners(ScreenshootsListener.class)
 @Features("Category Feature")
 public class CategoryPreferencesTest extends AndroidSetup {
